@@ -332,16 +332,176 @@ VirtualBox → Archivo → Exportar servicio virtualizado
 * ✅ Entorno reproducible
 
 ---
+Perfecto 👍
+Aquí tienes **EXACTAMENTE lo que faltaba del README**, ya **en formato Markdown (`.md`)**, listo para **copiar y pegar** **sin borrar nada de lo que ya tienes**.
 
-## 🎓 Uso educativo recomendado
+👉 Pégalo **al final de tu README.md** o justo después del bloque que has compartido.
 
-* ERP
-* DevOps básico
-* Redes
-* Arquitectura software
-* Contenedores
+---
 
-Todos los alumnos parten del **mismo entorno**.
+```markdown
+---
+
+## 🔐 Usuarios y credenciales de la máquina virtual
+
+La máquina virtual incluye usuarios preconfigurados para facilitar el acceso en el entorno educativo.
+
+### Usuario normal (uso habitual)
+- **Usuario:** `usuario`
+- **Contraseña:** `usuario`
+
+Este usuario se utiliza para:
+- Iniciar sesión en la VM
+- Ejecutar comandos Docker
+- Gestionar el entorno Odoo
+
+### Usuario administrador
+- **Usuario:** `root`
+- **Contraseña:** `usuario`
+
+⚠️ El usuario `root` debe utilizarse **solo para tareas de administración avanzada** del sistema.
+
+---
+
+## 🖥️ Acceso inicial a la máquina virtual
+
+1. Arranca la máquina virtual desde VirtualBox.
+2. Se mostrará una consola de texto (Ubuntu Server **no tiene entorno gráfico**).
+3. Inicia sesión con el usuario:
+```
+
+usuario
+
+```
+4. Introduce la contraseña:
+```
+
+usuario
+
+````
+5. Una vez dentro, el entorno Odoo se gestiona mediante Docker.
+
+---
+
+## 📌 Qué incluye y qué NO incluye esta VM
+
+### ✅ Incluye
+- Ubuntu Server 24.04 LTS
+- Docker y Docker Compose instalados y configurados
+- Odoo 16 Community ejecutándose en contenedor Docker oficial
+- PostgreSQL en contenedor independiente
+- Persistencia de datos de la base de datos
+- Persistencia de configuración y addons
+- Configuración de red con NAT y adaptador puente
+
+### ❌ NO incluye
+- Entorno gráfico
+- Instalación directa de Odoo en el sistema operativo
+- Odoo Enterprise
+- Certificados HTTPS
+- Configuración de correo electrónico
+- Servicios adicionales no relacionados con Odoo
+
+📌 Estas exclusiones son **intencionadas** para centrar el aprendizaje en infraestructura y arquitectura.
+
+---
+
+## 🧪 Comprobación rápida del estado del sistema
+
+Desde la carpeta `~/odoo-docker`:
+
+```bash
+docker ps
+````
+
+Debe mostrarse al menos:
+
+* Un contenedor `odoo`
+* Un contenedor `postgres`
+
+Para ver los logs de Odoo:
+
+```bash
+docker compose logs -f odoo
+```
+
+Si aparece el mensaje:
+
+```
+HTTP service running on 0.0.0.0:8069
+```
+
+✔️ El sistema está funcionando correctamente.
+
+---
+
+## ❗ Problemas comunes y solución rápida
+
+### Odoo no carga en el navegador
+
+* Comprueba que los contenedores están activos:
+
+  ```bash
+  docker ps
+  ```
+
+### No responde `http://localhost:8069`
+
+* Verifica el reenvío de puertos en VirtualBox (NAT → puerto 8069).
+* Comprueba que el contenedor de Odoo está escuchando.
+
+### Error al arrancar los contenedores
+
+Ejecuta:
+
+```bash
+docker compose down
+docker compose up -d
+```
+
+---
+
+## 🔄 Reinicio completo del entorno
+
+Si se requiere reiniciar todo el entorno Odoo:
+
+```bash
+cd ~/odoo-docker
+docker compose down
+docker compose up -d
+```
+
+---
+
+## 📌 Nota sobre seguridad
+
+Este entorno está diseñado para **uso educativo**:
+
+* Las contraseñas son simples y conocidas
+* No se recomienda su uso en producción
+* No está expuesto a Internet
+
+---
+
+## 🎓 Uso recomendado en el aula
+
+Esta máquina virtual está pensada para:
+
+* Comprender cómo se despliega un ERP real
+* Aprender la relación entre:
+
+  * Sistema operativo
+  * Contenedores
+  * Base de datos
+  * Red
+* Evitar problemas de instalación en equipos personales
+
+⚠️ El alumnado **no debe modificar**:
+
+* El sistema base
+* La instalación de Docker
+* La configuración de red
+  salvo indicación expresa del profesorado.
 
 ---
 
