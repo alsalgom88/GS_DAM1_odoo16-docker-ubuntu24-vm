@@ -331,15 +331,7 @@ VirtualBox → Archivo → Exportar servicio virtualizado
 * ✅ Arquitectura profesional
 * ✅ Entorno reproducible
 
----
-Perfecto 👍
-Aquí tienes **EXACTAMENTE lo que faltaba del README**, ya **en formato Markdown (`.md`)**, listo para **copiar y pegar** **sin borrar nada de lo que ya tienes**.
 
-👉 Pégalo **al final de tu README.md** o justo después del bloque que has compartido.
-
----
-
-```markdown
 ---
 
 ## 🔐 Usuarios y credenciales de la máquina virtual
